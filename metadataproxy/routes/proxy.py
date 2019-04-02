@@ -73,6 +73,11 @@ def iam_sts_credentials(api_version, requested_role, junk=None):
     )
     return jsonify(assumed_role)
 
+@app.route('/<api_version>/user-data/')
+def iam_role_name(api_version):
+    log.debug('Blocking request for user-data.')
+    return 'ACCESS FORBIDDEN', 403
+
 
 @app.route('/<path:url>')
 @app.route('/')
